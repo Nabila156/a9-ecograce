@@ -6,18 +6,18 @@ const Footer = () => {
     return (
         <footer className="mt-20 footer footer-center bg-[#E5ECF2] text-primary-content p-10">
             <aside>
-                <img className='rounded-full size-24' src="../../public/assets/logo.webp" alt="logo" />
+                <img className='rounded-full size-24' src="/assets/logo.webp" alt="logo" />
                 <p className="font-bold font-gummy text-5xl text-green-800">
                     EcoGrace
                 </p>
 
                 <p className='text-xl text-green-800'>Explore. Protect. Inspire.</p>
             </aside>
-            <nav class="grid grid-flow-col gap-10 md:gap-16 text-blue-950 font-medium">
-                <a class="link link-hover">About us</a>
-                <a class="link link-hover">Adventures</a>
-                <a class="link link-hover">Blog</a>
-                <a class="link link-hover">Contact</a>
+            <nav className="grid grid-flow-col gap-10 md:gap-16 text-blue-950 font-medium">
+                <a className="link link-hover">About us</a>
+                <a className="link link-hover">Adventures</a>
+                <a className="link link-hover">Blog</a>
+                <a className="link link-hover">Contact</a>
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-10 text-blue-950">

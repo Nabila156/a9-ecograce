@@ -5,11 +5,11 @@ import { FaRegUser } from "react-icons/fa";
 const Navbar = () => {
 
     const links = <>
-        <NavLink className='text-lg font-bold text-green-400 ml-32'>Home</NavLink>
-        <NavLink className='text-lg font-bold text-green-400 ml-12'>Eco Travel Tips</NavLink>
-        <NavLink className='text-lg font-bold text-green-400 ml-12'>Campaigns</NavLink>
-        <NavLink className='text-lg font-bold text-green-400 ml-12'>Sign up</NavLink>
-        <NavLink className='text-lg font-bold text-green-400 ml-12'>Update</NavLink>
+        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24'>Home</NavLink>
+        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Eco Travel Tips</NavLink>
+        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Campaigns</NavLink>
+        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Sign up</NavLink>
+        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Update</NavLink>
     </>
 
     return (
@@ -37,7 +37,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex gap-2 md:gap-4 items-center'>
-                    <img className='size-12 rounded-full' src="../../public/assets/logo.webp" alt="logo" />
+                    <img className='size-12 rounded-full' src="/assets/logo.webp" alt="logo" />
                     <h2 className='font-gummy text-green-800 font-extrabold text-3xl md:text-4xl'>EcoGrace</h2>
                 </div>
             </div>
@@ -47,7 +47,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-              <NavLink className="btn bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-full flex items-center gap-2 px-2 py-1"><FaRegUser />Profile</NavLink>
+              <NavLink className="btn bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-full flex items-center gap-2"><FaRegUser />Profile</NavLink>
             </div>
         </div>
     );
