@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Card = ({place}) => {
-    const {adventureTitle, image, } = place;
+    const {adventureTitle, image, ecoFriendlyFeatures} = place;
     return (
 
             <div className="card card-compact w-80 border">
@@ -11,10 +11,14 @@ const Card = ({place}) => {
                         alt={adventureTitle} />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">Shoes!</h2>
-                    <p>If a dog chews shoes whose shoes does he choose?</p>
+                    <h2 className="card-title font-extrabold text-2xl">{adventureTitle}</h2>
+                    <p>
+                        {
+                        ecoFriendlyFeatures.map((item, index)=><li className='font-medium text-slate-600 text-base' key={index}>{item}</li>)
+                        }
+                    </p>
                     <div className="card-actions">
-                        <button className="btn btn-primary">Buy Now</button>
+                        <button className="btn mt-4 font-bold font-gummy text-slate-600 text-xl bg-gradient-to-r from-blue-400 to-blue-100">Explore Now</button>
                     </div>
                 </div>
             </div>
