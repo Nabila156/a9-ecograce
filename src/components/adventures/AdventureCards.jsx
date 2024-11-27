@@ -6,13 +6,13 @@ const AdventureCards = () => {
 
     const places = useLoaderData();
     return (
-     <div className='mt-12 mx-32 grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+     <div className='my-12 mx-12 lg:mx-32 grid gap-y-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
          {
             places.length === 0 ? 
             (
                 <p className='text-center text-red-300 text-4xl'>No data found</p>
             ) : (
-                places.map(place => <Card place={place}></Card>)
+                places.map(place => <Card key={place.id} place={place}></Card>)
             )
          }
         

@@ -14,7 +14,7 @@ const Card = ({place}) => {
                     <h2 className="card-title font-extrabold text-2xl">{adventureTitle}</h2>
                     <p>
                         {
-                        ecoFriendlyFeatures.map((item, index)=><li className='font-medium text-slate-600 text-base' key={index}>{item}</li>)
+                        ecoFriendlyFeatures.map((item, index)=><li key={index} className='font-medium text-slate-600 text-base'>{item}</li>)
                         }
                     </p>
                     <div className="card-actions">

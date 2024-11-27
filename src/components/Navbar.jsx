@@ -6,14 +6,14 @@ const Navbar = () => {
 
     const links = <>
         <NavLink to={'/'} className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24'>Home</NavLink>
-        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Eco Travel Tips</NavLink>
+        <NavLink to={'/tips'} className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Eco Travel Tips</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Campaigns</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Sign up</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Update</NavLink>
     </>
 
     return (
-        <div className="navbar">
+        <div className="navbar bg-[#E5ECF2] md:px-10 lg:px-32 py-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

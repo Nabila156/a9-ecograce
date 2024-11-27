@@ -2,6 +2,10 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import AdventureCards from "../components/adventures/AdventureCards";
 import ErrorPage from "../components/ErrorPage";
+import 'animate.css';
+import PageTitle from "../components/PageTitle";
+import TipsLayout from "../layouts/TipsLayout";
+
 
 const router = createBrowserRouter([
     {
@@ -10,7 +14,13 @@ const router = createBrowserRouter([
       children: [
         {
           path: "",
-          element: <AdventureCards></AdventureCards>,
+          element:  <>
+          (
+           <PageTitle title="EcoGrace | Home"></PageTitle>
+           <AdventureCards></AdventureCards>
+         )
+         
+         </>,
           loader: async () => {
             const res = await fetch('/places.json');
             const data = await res.json();
@@ -27,6 +37,15 @@ const router = createBrowserRouter([
           }
         }
       ]
+    },
+    {
+       path: "/tips",
+       element: (
+        <>
+          <PageTitle title="EcoGrace | Travel Tips"></PageTitle>
+          <TipsLayout></TipsLayout>
+        </>
+       )
     },
     {
         path: "*",
