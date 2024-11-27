@@ -4,7 +4,7 @@ import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <footer className="mt-20 footer footer-center bg-[#E5ECF2] text-primary-content p-10">
+        <footer className="mt-20 footer footer-center bg-[#E5ECF2] p-10">
             <aside>
                 <img className='rounded-full size-24' src="/assets/logo.webp" alt="logo" />
                 <p className="font-bold font-gummy text-5xl text-green-800">

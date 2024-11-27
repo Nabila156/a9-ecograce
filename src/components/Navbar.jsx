@@ -5,7 +5,7 @@ import { FaRegUser } from "react-icons/fa";
 const Navbar = () => {
 
     const links = <>
-        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24'>Home</NavLink>
+        <NavLink to={'/'} className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24'>Home</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Eco Travel Tips</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Campaigns</NavLink>
         <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Sign up</NavLink>

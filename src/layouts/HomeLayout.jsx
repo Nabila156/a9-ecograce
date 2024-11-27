@@ -1,7 +1,7 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Banner from '../components/Banner';
+import Adventure from '../components/adventures/Adventure';
 
 const HomeLayout = () => {
     return (
@@ -11,6 +11,7 @@ const HomeLayout = () => {
             </nav>
             <main>
                 <Banner></Banner>
+                <Adventure></Adventure>
             </main>
             <footer>
                 <Footer></Footer>
