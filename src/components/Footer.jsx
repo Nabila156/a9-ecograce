@@ -4,7 +4,7 @@ import { FaSquareInstagram } from "react-icons/fa6";
 
 const Footer = () => {
     return (
-        <div className=' bg-[#E5ECF2] py-12 md:px-12 lg:px-32'>
+        <div className=' bg-[#E5ECF2] py-12 md:px-12 lg:px-24'>
 
             <footer className="footer place-items-center">
                 <aside>
@@ -13,7 +13,7 @@ const Footer = () => {
                     <p className='text-xl text-green-800'>Explore. Protect. Inspire.</p>
                 </aside>
                 <nav>
-                    <h6 className="footer-title text-slate-800 font-extrabold md:mt-4">Services</h6>
+                    <h6 className="footer-title text-slate-800 font-extrabold">Services</h6>
                     <a className="link link-hover font-medium text-slate-600">Eco-Tourism Packages</a>
                     <a className="link link-hover font-medium text-slate-600">Sustainable Accommodations</a>
                     <a className="link link-hover font-medium text-slate-600">Sustainable Activities and Workshops</a>
@@ -21,7 +21,7 @@ const Footer = () => {
                     <a className="link link-hover font-medium text-slate-600">Environmental Education</a>
                 </nav>
                 <nav>
-                    <h6 className="footer-title text-slate-800 font-extrabold md:mt-4">Company</h6>
+                    <h6 className="footer-title text-slate-800 font-extrabold">Company</h6>
 
                     <div>
                         <div className='flex flex-col'>
@@ -64,7 +64,7 @@ const Footer = () => {
 
                 </nav>
                 <nav>
-                    <h6 className="footer-title text-slate-800 font-extrabold md:mt-4">Legal</h6>
+                    <h6 className="footer-title text-slate-800 font-extrabold">Legal</h6>
                     <a className="link link-hover font-medium text-slate-600">Terms of use</a>
                     <a className="link link-hover font-medium text-slate-600">Privacy policy</a>
                     <a className="link link-hover font-medium text-slate-600">Cookie policy</a>

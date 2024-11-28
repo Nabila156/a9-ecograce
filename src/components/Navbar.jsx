@@ -5,11 +5,11 @@ import { FaRegUser } from "react-icons/fa";
 const Navbar = () => {
 
     const links = <>
-        <NavLink to={'/'} className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24'>Home</NavLink>
-        <NavLink to={'/tips'} className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Eco Travel Tips</NavLink>
-        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Campaigns</NavLink>
-        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Sign up</NavLink>
-        <NavLink className='text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12'>Update</NavLink>
+        <NavLink to={'/'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Home</NavLink>
+        <NavLink to={'/tips'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Eco Travel Tips</NavLink>
+        <NavLink className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Campaigns</NavLink>
+        <NavLink to={'/auth/login'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Login</NavLink>
+        <NavLink className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Update</NavLink>
     </>
 
     return (

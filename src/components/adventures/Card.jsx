@@ -18,7 +18,7 @@ const Card = ({place}) => {
                         }
                     </p>
                     <div className="card-actions">
-                        <button className="btn mt-4 font-bold font-gummy text-slate-600 text-xl bg-gradient-to-r from-blue-400 to-blue-100">Explore Now</button>
+                        <button className="btn w-full mt-4 font-extrabold font-gummy text-white text-xl bg-gradient-to-r from-blue-500 to-blue-200">Explore Now</button>
                     </div>
                 </div>
             </div>

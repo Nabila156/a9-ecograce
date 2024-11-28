@@ -6,11 +6,11 @@ import Adventure from '../components/adventures/Adventure';
 
 const HomeLayout = () => {
     return (
-        <div className='font-archivo'>
+        <div className='font-archivo min-h-screen flex flex-col'>
             <nav>
                 <Navbar></Navbar>
             </nav>
-            <main>
+            <main className='flex-grow'>
                 <Banner></Banner>
                 <Adventure></Adventure>
             </main>
