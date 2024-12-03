@@ -1,15 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
+import { AiOutlineLogin } from "react-icons/ai";
 
 const Navbar = () => {
 
     const links = <>
-        <NavLink to={'/'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-24 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Home</NavLink>
-        <NavLink to={'/tips'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Eco Travel Tips</NavLink>
-        <NavLink className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Campaigns</NavLink>
-        <NavLink to={'/auth/login'} className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Login</NavLink>
-        <NavLink className={({isActive}) => `text-lg font-bold text-green-600 px-4 lg:px-0 lg:ml-12 ${isActive ? 'animate__animated  animate__flash text-blue-500 border border-slate-400 rounded bg-slate-300' : ''}`}>Update</NavLink>
+        <NavLink to={'/'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Home</NavLink>
+        <NavLink to={'/tips'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Eco Travel Tips</NavLink>
+        <NavLink  to={'/campaigns'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Campaigns</NavLink>
+        
     </>
 
     return (
@@ -47,7 +47,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-              <NavLink className="btn bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-full flex items-center gap-2"><FaRegUser />Profile</NavLink>
+              <NavLink to={'/auth/login'} className="btn mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl flex items-center gap-2"><AiOutlineLogin className='size-6'/>Login</NavLink>
+              <NavLink className="border border-blue-500 p-2 rounded-full"><FaRegUser className='size-8' /></NavLink>
             </div>
         </div>
     );

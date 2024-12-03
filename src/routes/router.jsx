@@ -6,7 +6,9 @@ import ErrorPage from "../components/ErrorPage";
 import PageTitle from "../components/PageTitle";
 import TipsLayout from "../layouts/TipsLayout";
 import AuthLayout from "../layouts/AuthLayout";
+import Register from "../components/register/Register";
 import Login from "../components/login/login";
+import CampaignsLayout from "../layouts/CampaignsLayout";
 
 
 const router = createBrowserRouter([
@@ -50,6 +52,15 @@ const router = createBrowserRouter([
     )
   },
   {
+    path: "/campaigns",
+    element: (
+      <>
+        <PageTitle title="EcoGrace | Campaigns"></PageTitle>
+        <CampaignsLayout></CampaignsLayout>
+      </>
+    )
+  },
+  {
     path: "/auth",
     element: <AuthLayout></AuthLayout>,
     children: [
@@ -67,7 +78,7 @@ const router = createBrowserRouter([
         element: (
           <>
             <PageTitle title="EcoGrace | Register"></PageTitle>
-            <h2>Register</h2>
+            <Register></Register>
           </>
         )
       }
