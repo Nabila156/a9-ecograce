@@ -9,6 +9,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../components/register/Register";
 import Login from "../components/login/login";
 import CampaignsLayout from "../layouts/CampaignsLayout";
+import AdventureDetailsLayout from "../layouts/AdventureDetailsLayout";
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,21 @@ const router = createBrowserRouter([
         <CampaignsLayout></CampaignsLayout>
       </>
     )
+  },
+  {
+    path: "/place/:id",
+    element:
+      <>
+        <PageTitle title="EcoGrace | Details"></PageTitle>
+        <AdventureDetailsLayout></AdventureDetailsLayout>
+      </>,
+      loader: async ({params}) => {
+        console.log(params.id)
+        const res = await fetch('/places.json');
+        const data = await res.json();
+        return data.find(place => parseInt(place.id) === parseInt(params.id)) || null;
+    }
+
   },
   {
     path: "/auth",

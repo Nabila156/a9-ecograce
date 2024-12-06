@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaSquareInstagram } from "react-icons/fa6";
 
@@ -8,8 +8,8 @@ const Footer = () => {
 
             <footer className="footer place-items-center">
                 <aside>
-                    <img className='rounded-full size-24' src="/assets/logo.webp" alt="logo" />
-                    <h2 className='font-bold font-gummy text-5xl text-green-800'>EcoGrace</h2>
+                    <img className='rounded-full size-12 md:size-24' src="/assets/logo.webp" alt="logo" />
+                    <h2 className='font-bold font-gummy text-4xl md:text-5xl text-green-800'>EcoGrace</h2>
                     <p className='text-xl text-green-800'>Explore. Protect. Inspire.</p>
                 </aside>
                 <nav>

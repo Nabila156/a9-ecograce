@@ -1,7 +1,8 @@
-import React from 'react';
+
+import { Link } from 'react-router-dom';
 
 const Card = ({place}) => {
-    const {adventureTitle, image, ecoFriendlyFeatures} = place;
+    const {adventureTitle, image, ecoFriendlyFeatures, id} = place;
     return (
 
             <div className="card card-compact w-80 border">
@@ -18,7 +19,7 @@ const Card = ({place}) => {
                         }
                     </p>
                     <div className="card-actions">
-                        <button className="btn w-full mt-4 font-extrabold font-gummy text-white text-xl bg-gradient-to-r from-blue-500 to-blue-200">Explore Now</button>
+                        <Link to={`/place/${id}`} className="btn w-full mt-4 font-extrabold font-gummy text-white text-xl bg-gradient-to-r from-blue-500 to-blue-200">Explore Now</Link>
                     </div>
                 </div>
             </div>
