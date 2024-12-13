@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+    const navigate = useNavigate();
     const { createNewUser, setUser } = useContext(AuthContext);
-    const [error, setError] = useState({});
+    const [error, setError] = useState('');
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -15,8 +17,13 @@ const Register = () => {
         const photo = form.get("photo");
         const password = form.get("password");
 
-        if(password.length < 6){
-            setError({...error, name: "must be at least 6 character long"})
+
+        // reset error & status
+        setError('');
+
+        const passwordValidation = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+        if(!passwordValidation.test(password)){
+            setError("The password must have an uppercase and a lowercase letter, and must be at least 6 characters long.")
             return;
         }
 
@@ -24,11 +31,13 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
+                toast.success("Registration successful!");
+                navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                setError(errorMessage);
             });
     }
 
@@ -61,14 +70,16 @@ const Register = () => {
                     <input name='password' type="password" placeholder="password" className="input input-bordered" required />
                 </div>
 
-                {
-                    error.name && <label className="label text-sm text-red-600"> {error.name} </label>
-                }
 
                 <div className="form-control mt-6">
                     <button className="btn text-white text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-200">Register</button>
                 </div>
                 <p className='text-center'>Do you already have an account? Please <Link to={'/auth/login'} className='font-bold text-blue-800'>Login</Link >.</p>
+
+                {
+                    error && <p className='text-red-500 text-center font-bold'>{error}</p>
+                }
+              
             </form>
         </div>
     );
