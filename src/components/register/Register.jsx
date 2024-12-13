@@ -1,31 +1,35 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 
 const Register = () => {
-    const {createNewUser, setUser} = useContext(AuthContext)
-    const handleSubmit = (e)=>{
-    e.preventDefault();
-   
-    // get form data
-    const form = new FormData(e.target);
-    const name = form.get("name");
-    const email = form.get("email");
-    const photo = form.get("photo");
-    const password = form.get("password");
+    const { createNewUser, setUser } = useContext(AuthContext);
+    const [error, setError] = useState({});
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    createNewUser(email, password)
-    .then((result)=>{
-        const user = result.user;
-        setUser(user);
-        console.log(user)
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage, errorCode)
-        // ..
-      });
+        // get form data
+        const form = new FormData(e.target);
+        const name = form.get("name");
+        const email = form.get("email");
+        const photo = form.get("photo");
+        const password = form.get("password");
+
+        if(password.length < 6){
+            setError({...error, name: "must be at least 6 character long"})
+            return;
+        }
+
+        createNewUser(email, password)
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorMessage)
+            });
     }
 
     return (
@@ -48,7 +52,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text text-xl font-medium">Photo-URL</span>
                     </label>
-                    <input name='photo' type="url" placeholder="photo-url" className="input input-bordered"/>
+                    <input name='photo' type="url" placeholder="photo-url" className="input input-bordered" />
                 </div>
                 <div className="form-control">
                     <label className="label">
@@ -56,6 +60,11 @@ const Register = () => {
                     </label>
                     <input name='password' type="password" placeholder="password" className="input input-bordered" required />
                 </div>
+
+                {
+                    error.name && <label className="label text-sm text-red-600"> {error.name} </label>
+                }
+
                 <div className="form-control mt-6">
                     <button className="btn text-white text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-200">Register</button>
                 </div>

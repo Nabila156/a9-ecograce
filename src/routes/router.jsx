@@ -10,6 +10,7 @@ import Register from "../components/register/Register";
 import Login from "../components/login/login";
 import CampaignsLayout from "../layouts/CampaignsLayout";
 import AdventureDetailsLayout from "../layouts/AdventureDetailsLayout";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -66,7 +67,9 @@ const router = createBrowserRouter([
     element:
       <>
         <PageTitle title="EcoGrace | Details"></PageTitle>
-        <AdventureDetailsLayout></AdventureDetailsLayout>
+        <PrivateRoute>
+          <AdventureDetailsLayout></AdventureDetailsLayout>
+        </PrivateRoute>
       </>,
       loader: async ({params}) => {
         console.log(params.id)
