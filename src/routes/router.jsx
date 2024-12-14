@@ -20,13 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <>
-          (
-          <PageTitle title="EcoGrace | Home"></PageTitle>
-          <AdventureCards></AdventureCards>
-          )
-
-        </>,
+        element: <AdventureCards></AdventureCards>,
         loader: async () => {
           const res = await fetch('/places.json');
           const data = await res.json();
@@ -46,31 +40,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/tips",
-    element: (
-      <>
-        <PageTitle title="EcoGrace | Eco Travel Tips"></PageTitle>
-        <TipsLayout></TipsLayout>
-      </>
-    )
+    element: <TipsLayout></TipsLayout>
   },
   {
     path: "/campaigns",
-    element: (
-      <>
-        <PageTitle title="EcoGrace | Campaigns"></PageTitle>
-        <CampaignsLayout></CampaignsLayout>
-      </>
-    )
+    element: <CampaignsLayout></CampaignsLayout>
   },
   {
     path: "/place/:id",
     element:
-      <>
-        <PageTitle title="EcoGrace | Details"></PageTitle>
         <PrivateRoute>
           <AdventureDetailsLayout></AdventureDetailsLayout>
-        </PrivateRoute>
-      </>,
+        </PrivateRoute>,
       loader: async ({params}) => {
         console.log(params.id)
         const res = await fetch('/places.json');
@@ -85,21 +66,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/auth/login",
-        element: (
-          <>
-            <PageTitle title="EcoGrace | Login"></PageTitle>
-            <Login></Login>
-          </>
-        )
+        element: <Login></Login>
       },
       {
         path: "/auth/register",
-        element: (
-          <>
-            <PageTitle title="EcoGrace | Register"></PageTitle>
-            <Register></Register>
-          </>
-        )
+        element: <Register></Register>
       }
     ]
   },

@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AdventureDetails from "../components/adventures/adventureDetails";
 import { useLoaderData } from "react-router-dom";
+import DynamicTitle from "../components/DynamicTitle";
 
 
 const AdventureDetailsLayout = () => {
@@ -18,6 +19,7 @@ const AdventureDetailsLayout = () => {
 
     return (
         <div className="font-archivo flex flex-col min-h-screen">
+            <DynamicTitle></DynamicTitle>
             <header>
                 <Navbar></Navbar>
             </header>
