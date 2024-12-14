@@ -10,7 +10,8 @@ const DynamicTitle = () => {
             '/tips': 'EcoGrace | Eco Travel Tips',
             '/campaigns': 'EcoGrace | Campaigns',
             '/auth/login': 'EcoGrace | Login',
-            '/auth/register': 'EcoGrace | Register'
+            '/auth/register': 'EcoGrace | Register',
+            '/forgot-password' : 'EcoGrace | Forgot Password'
         };
 
         if (location.pathname.startsWith('/place/')) {

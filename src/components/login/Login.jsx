@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
@@ -10,7 +10,13 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+    const emailRef = useRef(null);
     
+    const handleForgetPassword = ()=>{
+        const email = emailRef.current?.value;
+        navigate("/forgot-password", {state: {email}});
+    };
+
     const handleSubmit = (e) =>{
         e.preventDefault();
         const form = new FormData(e.target);
@@ -27,7 +33,7 @@ const Login = () => {
             setError({...error, login: err.code});
         });
         
-    }
+    };
 
 
     return (
@@ -39,7 +45,7 @@ const Login = () => {
                     <label className="label">
                         <span className="label-text text-xl font-medium">Email</span>
                     </label>
-                    <input type="email" name='email' placeholder="email" className="input input-bordered" required />
+                    <input type="email" name='email' ref={emailRef} placeholder="email" className="input input-bordered" required />
                 </div>
                 <div className="form-control relative">
                     <label className="label">
@@ -56,7 +62,7 @@ const Login = () => {
                         error.login && <label className="label text-sm text-red-600"> {error.login} </label>
                     }
 
-                    <label className="label">
+                    <label onClick={handleForgetPassword} className="label">
                         <a href="#" className="label-text-alt link link-hover text-base">Forgot password?</a>
                     </label>
                 </div>

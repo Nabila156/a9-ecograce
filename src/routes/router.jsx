@@ -3,7 +3,6 @@ import 'animate.css';
 import HomeLayout from "../layouts/HomeLayout";
 import AdventureCards from "../components/adventures/AdventureCards";
 import ErrorPage from "../components/ErrorPage";
-import PageTitle from "../components/PageTitle";
 import TipsLayout from "../layouts/TipsLayout";
 import AuthLayout from "../layouts/AuthLayout";
 import Register from "../components/register/Register";
@@ -11,6 +10,7 @@ import Login from "../components/login/login";
 import CampaignsLayout from "../layouts/CampaignsLayout";
 import AdventureDetailsLayout from "../layouts/AdventureDetailsLayout";
 import PrivateRoute from "./PrivateRoute";
+import ForgotPassword from "../components/ForgotPassword";
 
 
 const router = createBrowserRouter([
@@ -49,16 +49,20 @@ const router = createBrowserRouter([
   {
     path: "/place/:id",
     element:
-        <PrivateRoute>
-          <AdventureDetailsLayout></AdventureDetailsLayout>
-        </PrivateRoute>,
-      loader: async ({params}) => {
-        console.log(params.id)
-        const res = await fetch('/places.json');
-        const data = await res.json();
-        return data.find(place => parseInt(place.id) === parseInt(params.id)) || null;
+      <PrivateRoute>
+        <AdventureDetailsLayout></AdventureDetailsLayout>
+      </PrivateRoute>,
+    loader: async ({ params }) => {
+      console.log(params.id)
+      const res = await fetch('/places.json');
+      const data = await res.json();
+      return data.find(place => parseInt(place.id) === parseInt(params.id)) || null;
     }
 
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword></ForgotPassword>
   },
   {
     path: "/auth",
