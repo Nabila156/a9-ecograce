@@ -1,11 +1,13 @@
 import { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 
 const Login = () => {
 
     const {setUser, userLogin} = useContext(AuthContext);
     const [error, setError] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     
@@ -39,12 +41,17 @@ const Login = () => {
                     </label>
                     <input type="email" name='email' placeholder="email" className="input input-bordered" required />
                 </div>
-                <div className="form-control">
+                <div className="form-control relative">
                     <label className="label">
                         <span className="label-text text-xl font-medium">Password</span>
                     </label>
-                    <input type="password" name='password' placeholder="password" className="input input-bordered" required />
-                    
+                    <input type={showPassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
+                    <button type='button' onClick={()=> setShowPassword(!showPassword)} className='btn btn-sm absolute right-6 top-[52px]'>
+                        {
+                            showPassword ? <PiEyeSlashLight /> : <PiEyeLight />
+                        }
+                    </button>
+
                     {
                         error.login && <label className="label text-sm text-red-600"> {error.login} </label>
                     }

@@ -2,11 +2,13 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
+import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 
 const Register = () => {
     const navigate = useNavigate();
     const { createNewUser, setUser } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -22,7 +24,7 @@ const Register = () => {
         setError('');
 
         const passwordValidation = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
-        if(!passwordValidation.test(password)){
+        if (!passwordValidation.test(password)) {
             setError("The password must have an uppercase and a lowercase letter, and must be at least 6 characters long.")
             return;
         }
@@ -63,11 +65,16 @@ const Register = () => {
                     </label>
                     <input name='photo' type="url" placeholder="photo-url" className="input input-bordered" />
                 </div>
-                <div className="form-control">
+                <div className="form-control relative">
                     <label className="label">
                         <span className="label-text text-xl font-medium">Password</span>
                     </label>
-                    <input name='password' type="password" placeholder="password" className="input input-bordered" required />
+                    <input type={showPassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
+                    <button type='button' onClick={() => setShowPassword(!showPassword)} className='btn btn-sm absolute right-6 top-[52px]'>
+                        {
+                            showPassword ? <PiEyeSlashLight /> : <PiEyeLight />
+                        }
+                    </button>
                 </div>
 
 
@@ -79,7 +86,7 @@ const Register = () => {
                 {
                     error && <p className='text-red-500 text-center font-bold'>{error}</p>
                 }
-              
+
             </form>
         </div>
     );
