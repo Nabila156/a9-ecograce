@@ -21,3 +21,4 @@ const AdventureCards = () => {
 };
 
 export default AdventureCards;
+

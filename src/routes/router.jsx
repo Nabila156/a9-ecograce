@@ -11,6 +11,9 @@ import CampaignsLayout from "../layouts/CampaignsLayout";
 import AdventureDetailsLayout from "../layouts/AdventureDetailsLayout";
 import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "../components/ForgotPassword";
+import 'aos/dist/aos.css';
+import AOS from 'aos';
+AOS.init();
 
 
 const router = createBrowserRouter([

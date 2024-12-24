@@ -1,27 +1,41 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 
 export const AuthContext = createContext();
-const auth = getAuth(app)
-const AuthProvider = ({children}) =>{
+const auth = getAuth(app);
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const createNewUser=(email, password)=>{
+    const createNewUser = (email, password) => {
         setLoading(true);
-       return createUserWithEmailAndPassword(auth, email, password);
-    }
+        return createUserWithEmailAndPassword(auth, email, password);
+    };
 
-    const userLogin =(email, password)=>{
+    const userLogin = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
-     }
+    };
 
-    const logOut = () =>{
+    const logOut = () => {
         setLoading(true);
         return signOut(auth)
-    }
+    };
+
+
+    const provider = new GoogleAuthProvider;
+    const handleGoogleSignIn = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const user = result.user;
+                setUser(user); 
+                navigate("/");
+            })
+            .catch((error) => {
+                console.error('Error during Google Sign-In:', error);
+            });
+    };
 
 
     const authInfo = {
@@ -29,15 +43,16 @@ const AuthProvider = ({children}) =>{
         setUser,
         createNewUser,
         logOut,
-        userLogin
+        userLogin,
+        handleGoogleSignIn
     };
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setLoading(false);
         });
-        return()=>{
+        return () => {
             unsubscribe();
         };
     }, [])

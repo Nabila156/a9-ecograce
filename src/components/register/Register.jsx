@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-toastify';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
+import { ImGoogle } from 'react-icons/im';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createNewUser, setUser } = useContext(AuthContext);
+    const { createNewUser, setUser, handleGoogleSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = (e) => {
@@ -81,6 +82,8 @@ const Register = () => {
                 <div className="form-control mt-6">
                     <button className="btn text-white text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-200">Register</button>
                 </div>
+                <p className='text-center mt-3 font-bold text-base'>OR</p>
+                <Link to={'/'} onClick={handleGoogleSignIn} className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'><ImGoogle />Login with Google</Link>
                 <p className='text-center'>Do you already have an account? Please <Link to={'/auth/login'} className='font-bold text-blue-800'>Login</Link >.</p>
 
                 {
@@ -88,6 +91,7 @@ const Register = () => {
                 }
 
             </form>
+
         </div>
     );
 };

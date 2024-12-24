@@ -2,39 +2,40 @@ import { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
+import { ImGoogle } from 'react-icons/im';
+
 
 const Login = () => {
 
-    const {setUser, userLogin} = useContext(AuthContext);
+    const { setUser, userLogin, handleGoogleSignIn } = useContext(AuthContext);
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
     const emailRef = useRef(null);
-    
-    const handleForgetPassword = ()=>{
+
+    const handleForgetPassword = () => {
         const email = emailRef.current?.value;
-        navigate("/forgot-password", {state: {email}});
+        navigate("/forgot-password", { state: { email } });
     };
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         const form = new FormData(e.target);
         const email = form.get("email");
         const password = form.get("password");
 
         userLogin(email, password)
-        .then((result) => {
-          const user = result.user;
-          setUser(user); 
-          navigate(location?.state ? location.state : "/")
-        })
-        .catch((err) => {
-            setError({...error, login: err.code});
-        });
-        
-    };
+            .then((result) => {
+                const user = result.user;
+                setUser(user);
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch((err) => {
+                setError({ ...error, login: err.code });
+            });
 
+    };
 
     return (
 
@@ -52,7 +53,7 @@ const Login = () => {
                         <span className="label-text text-xl font-medium">Password</span>
                     </label>
                     <input type={showPassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
-                    <button type='button' onClick={()=> setShowPassword(!showPassword)} className='btn btn-sm absolute right-6 top-[52px]'>
+                    <button type='button' onClick={() => setShowPassword(!showPassword)} className='btn btn-sm absolute right-6 top-[52px]'>
                         {
                             showPassword ? <PiEyeSlashLight /> : <PiEyeLight />
                         }
@@ -69,6 +70,9 @@ const Login = () => {
                 <div className="form-control mt-6">
                     <button className="btn text-white text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-200">Login</button>
                 </div>
+                <p className='text-center mt-3 font-bold text-base'>OR</p>
+                <Link to={'/'} onClick={handleGoogleSignIn} className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'><ImGoogle />Login with Google</Link>
+
                 <p className='text-center'>Don't you have an account? Please  <Link to={'/auth/register'} className='font-bold text-blue-800'>Register</Link >.</p>
             </form>
         </div>
