@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebase.config";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -30,10 +31,12 @@ const AuthProvider = ({ children }) => {
             .then((result) => {
                 const user = result.user;
                 setUser(user); 
+                console.log(user.displayName)
+                toast.success(`Hi, ${user.displayName}! Enjoy exploring!`)
                 navigate("/");
             })
             .catch((error) => {
-                console.error('Error during Google Sign-In:', error);
+                setError('Error during Google Sign-In:', error);
             });
     };
 

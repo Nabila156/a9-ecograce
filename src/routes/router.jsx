@@ -13,6 +13,8 @@ import PrivateRoute from "./PrivateRoute";
 import ForgotPassword from "../components/ForgotPassword";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
+import MyProfile from "../components/profile/MyProfile";
+import UpdateProfile from "../components/profile/updateProfile";
 AOS.init();
 
 
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
   {
     path: "/campaigns",
     element: <CampaignsLayout></CampaignsLayout>
+  },
+  {
+    path: "/my-profile",
+    element: <MyProfile></MyProfile>
+  },
+  {
+    path: "/update-profile",
+    element: <UpdateProfile></UpdateProfile>
   },
   {
     path: "/place/:id",

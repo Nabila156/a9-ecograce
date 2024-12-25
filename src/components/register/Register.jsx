@@ -34,7 +34,7 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                toast.success("Registration successful!");
+                toast.success(`Hi, ${user.displayName}! Enjoy exploring!`);
                 navigate('/');
             })
             .catch((error) => {
@@ -83,8 +83,8 @@ const Register = () => {
                     <button className="btn text-white text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-200">Register</button>
                 </div>
                 <p className='text-center mt-3 font-bold text-base'>OR</p>
-                <Link to={'/'} onClick={handleGoogleSignIn} className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'><ImGoogle />Login with Google</Link>
-                <p className='text-center'>Do you already have an account? Please <Link to={'/auth/login'} className='font-bold text-blue-800'>Login</Link >.</p>
+                <Link to='/' onClick={handleGoogleSignIn} className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'><ImGoogle />Login with Google</Link>
+                <p className='text-center'>Do you already have an account? Please <Link to= '/auth/login' className='font-bold text-blue-800'>Login</Link >.</p>
 
                 {
                     error && <p className='text-red-500 text-center font-bold'>{error}</p>

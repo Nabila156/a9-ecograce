@@ -61,7 +61,7 @@ const Navbar = () => {
                     : <NavLink to={'/auth/login'} className="btn hidden md: mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl md:flex items-center gap-2"><AiOutlineLogin className='size-6'/>Login</NavLink>
              
                 }
-               <NavLink className="border border-blue-500 p-2 rounded-full"><FaRegUser className='size-6 md:size-8' /></NavLink>
+               <NavLink to={'/my-profile'} className="border border-blue-500 p-2 rounded-full"><FaRegUser className='size-6 md:size-8' /></NavLink>
             </div>
         </div>
     );
