@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
-import { toast } from 'react-toastify';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import { ImGoogle } from 'react-icons/im';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createNewUser, setUser, handleGoogleSignIn } = useContext(AuthContext);
+    const { createNewUser, setUser, handleGoogleSignIn, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = (e) => {
@@ -34,7 +33,7 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                toast.success(`Hi, ${user.displayName}! Enjoy exploring!`);
+                updateUserProfile({displayName: name, photoURL: photo});
                 navigate('/');
             })
             .catch((error) => {

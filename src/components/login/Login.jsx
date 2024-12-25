@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import { ImGoogle } from 'react-icons/im';
-import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -30,7 +29,6 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                toast.success(`Hi, ${user.displayName}! Enjoy exploring!`);
                 navigate(location?.state ? location.state : "/")
             })
             .catch((err) => {

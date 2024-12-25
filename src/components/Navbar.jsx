@@ -6,21 +6,16 @@ import { AuthContext } from '../provider/AuthProvider';
 import { IoMdLogOut } from "react-icons/io";
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const links = <>
-        <NavLink to={'/'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Home</NavLink>
-        <NavLink to={'/tips'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Eco Travel Tips</NavLink>
-        <NavLink  to={'/campaigns'} className={({isActive}) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Campaigns</NavLink>
-       
+        <NavLink to={'/'} className={({ isActive }) => `text-lg font-bold px-4 lg:px-0 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Home</NavLink>
+        <NavLink to={'/tips'} className={({ isActive }) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Eco Travel Tips</NavLink>
+        <NavLink to={'/campaigns'} className={({ isActive }) => `text-lg font-bold px-4 lg:px-0 lg:ml-12 ${isActive ? 'text-blue-500' : 'text-green-600'}`}>Campaigns</NavLink>
+
     </>
 
     return (
-        <div className="navbar bg-[#E5ECF2] md:px-10 lg:px-32 py-10">
-            <div>
-                {
-                    user && user.email
-                }
-            </div>
+        <div className="navbar bg-[#E5ECF2] md:px-10 lg:px-32 py-6">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -41,7 +36,7 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         {links}
-                        <li className='block md:hidden'><NavLink to={'/auth/login'} className="btn mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-base md:text-lg font-bold rounded-xl flex items-center gap-2"><AiOutlineLogin className='md:size-6'/>Login</NavLink>
+                        <li className='block md:hidden'><NavLink to={'/auth/login'} className="btn mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-base md:text-lg font-bold rounded-xl flex items-center gap-2"><AiOutlineLogin className='md:size-6' />Login</NavLink>
                         </li>
                     </ul>
                 </div>
@@ -57,11 +52,22 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {
-                    user && user?.email? <NavLink onClick={logOut} className="btn hidden md: mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl md:flex items-center gap-2"><IoMdLogOut className='size-6'/>Logout</NavLink>
-                    : <NavLink to={'/auth/login'} className="btn hidden md: mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl md:flex items-center gap-2"><AiOutlineLogin className='size-6'/>Login</NavLink>
-             
+                    user && user?.email ? <NavLink onClick={logOut} className="btn hidden md: mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl md:flex items-center gap-2"><IoMdLogOut className='size-6' />Logout</NavLink>
+                        : <NavLink to={'/auth/login'} className="btn hidden md: mr-1 md:mr-10 bg-gradient-to-r from-blue-500 to-green-400 text-lg font-bold rounded-xl md:flex items-center gap-2"><AiOutlineLogin className='size-6' />Login</NavLink>
+
                 }
-               <NavLink to={'/my-profile'} className="border border-blue-500 p-2 rounded-full"><FaRegUser className='size-6 md:size-8' /></NavLink>
+                {
+                    user && user?.email ?
+                        <div className='group pt-4'>
+                            {
+                                user?.photoURL ? <NavLink to={'/my-profile'}><img className='h-20 w-20 rounded-full' src={user?.photoURL} alt="user" /></NavLink>
+                                    : <NavLink to={'/my-profile'}><FaRegUser className='size-6 md:size-10' /></NavLink>
+                            }
+                            <p className='font-bold font-gummy text-xl opacity-0 group-hover:opacity-100 text-center'>{user?.displayName?.split(' ')[0]}</p>
+                        </div>
+                        : ''
+
+                }
             </div>
         </div>
     );
