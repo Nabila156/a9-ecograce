@@ -47,7 +47,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/tips",
-    element: <TipsLayout></TipsLayout>
+    element: <TipsLayout></TipsLayout>,
+    loader: async () => {
+      const res = await fetch('/tips.json');
+      const data = await res.json();
+      return data;
+    }
   },
   {
     path: "/campaigns",

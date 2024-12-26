@@ -4,7 +4,7 @@ const CampaignCard = ({ campaign }) => {
     const { title, description, image, startDate, endDate } = campaign;
 
     return (
-        <div className="card card-compact border w-72 hover:scale-105 transform transition duration-300">
+        <div className="card card-compact rounded-none shadow-lg border w-72 hover:scale-105 transform transition duration-300">
             <img src={image} alt={title} className="w-full h-1/2 object-cover" />
             <div className="p-4">
                 <div className="h-32 flex-grow overflow-auto">

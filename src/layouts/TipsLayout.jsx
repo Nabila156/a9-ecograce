@@ -1,9 +1,13 @@
+import { useLoaderData } from "react-router-dom";
 import DynamicTitle from "../components/DynamicTitle";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import Tips from "../components/tips/Tips";
 
 
 const TipsLayout = () => {
+
+    const tips = useLoaderData();
 
     return (
         <div className="min-h-screen flex flex-col font-archivo">
@@ -12,7 +16,7 @@ const TipsLayout = () => {
                 <Navbar></Navbar>
             </header>
             <main className="flex-grow">
-                <h1>Hey!</h1>
+                <Tips tips={tips}></Tips>
             </main>
             <footer>
                 <Footer></Footer>

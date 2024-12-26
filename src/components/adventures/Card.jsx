@@ -9,7 +9,7 @@ const Card = ({ place }) => {
             data-aos='zoom-in-down'
             data-aos-easing='ease-out-cubic'
             data-aos-duration='2000'>
-            <div className="card card-compact w-80 border hover:scale-105 transform transition duration-300">
+            <div className="card card-compact w-80 border shadow-lg hover:scale-105 transform transition duration-300">
                 < figure >
                     <img className='h-[200px] p-2 w-full rounded-2xl'
                         src={image}
