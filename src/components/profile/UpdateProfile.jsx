@@ -3,12 +3,31 @@ import { useNavigate } from "react-router-dom";
 import DynamicTitle from "../DynamicTitle";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
+    const { updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate();
-    const handleSubmit =(e)=>{
+    const [error, setError] = useState('');
+
+    const handleSubmit = (e) => {
         e.preventDefault();
-        navigate('/my-profile')
+
+        const form = new FormData(e.target);
+        const name = form.get("name");
+        const photo = form.get("photo");
+
+        updateUserProfile({ displayName: name, photoURL: photo })
+            .then(() => {
+                toast.success("Profile updated!");
+            })
+            .catch((error) => {
+                setError("Error", error);
+            })
+
+        navigate('/my-profile');
     }
 
     return (
@@ -18,22 +37,22 @@ const UpdateProfile = () => {
                 <Navbar></Navbar>
             </header>
             <main className='flex-grow card bg-blue-50 mx-auto my-10 w-full max-w-xs md:max-w-lg'>
-                    <form onSubmit={handleSubmit} className="card-body">
-                        <h1 className="text-center animate__animated animate__flash font-extrabold text-3xl md:text-4xl text-blue-500 pt-3">Update Your Profile</h1>
-                        <div className="form-control mt-5">
-                            <label className="label">
-                                <span className="label-text text-xl font-medium">Name</span>
-                            </label>
-                            <input type="text" name='name' placeholder="name" className="input input-bordered" />
-                        </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text text-xl font-medium">Photo-URL</span>
-                            </label>
-                            <input type="url" name='photo' placeholder="photo-url" className="input input-bordered"/>
-                        </div>
-                        <button className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'>Update</button>
-                    </form>
+                <form onSubmit={handleSubmit} className="card-body">
+                    <h1 className="text-center animate__animated animate__flash font-extrabold text-3xl md:text-4xl text-blue-500 pt-3">Update Your Profile</h1>
+                    <div className="form-control mt-5">
+                        <label className="label">
+                            <span className="label-text text-xl font-medium">Name</span>
+                        </label>
+                        <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text text-xl font-medium">Photo-URL</span>
+                        </label>
+                        <input type="url" name='photo' placeholder="photo-url" className="input input-bordered" />
+                    </div>
+                    <button className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'>Update</button>
+                </form>
             </main>
             <footer>
                 <Footer></Footer>

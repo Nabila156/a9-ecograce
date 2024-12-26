@@ -11,7 +11,9 @@ const DynamicTitle = () => {
             '/campaigns': 'EcoGrace | Campaigns',
             '/auth/login': 'EcoGrace | Login',
             '/auth/register': 'EcoGrace | Register',
-            '/forgot-password' : 'EcoGrace | Forgot Password'
+            '/forgot-password' : 'EcoGrace | Forgot Password',
+            '/my-profile' : 'EcoGrace | My Profile',
+            '/update-profile' : 'EcoGrace | Update'
         };
 
         if (location.pathname.startsWith('/place/')) {

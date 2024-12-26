@@ -41,7 +41,7 @@ const Register = () => {
                 const errorMessage = error.message;
                 setError(errorMessage);
             });
-    }
+    };
 
     return (
         <div className="card bg-blue-50 mx-auto my-10 w-full max-w-xs md:max-w-lg">

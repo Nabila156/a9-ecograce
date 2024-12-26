@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
-import DynamicTitle from "./DynamicTitle";
-import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
+import DynamicTitle from "../DynamicTitle";
+import Navbar from "../Navbar";
 
 const ForgotPassword = () => {
     const location = useLocation();

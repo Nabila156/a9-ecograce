@@ -9,7 +9,7 @@ import { AuthContext } from '../../provider/AuthProvider';
 const MyProfile = () => {
 
     const { user } = useContext(AuthContext);
-
+    
     return (
         <div className='min-h-screen flex flex-col font-archivo'>
             <DynamicTitle></DynamicTitle>

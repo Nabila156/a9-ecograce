@@ -28,11 +28,11 @@ const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider;
     const handleGoogleSignIn = () => {
+        setLoading(true);
         signInWithPopup(auth, provider)
             .then((result) => {
                 const user = result.user;
                 setUser(user); 
-                navigate("/");
             })
             .catch((error) => {
                 setError('Error during Google Sign-In:', error);
@@ -41,6 +41,7 @@ const AuthProvider = ({ children }) => {
 
 
     const updateUserProfile = (updatedData)=>{
+        setLoading(true);
         return updateProfile(auth.currentUser, updatedData);
     }
     
@@ -51,7 +52,8 @@ const AuthProvider = ({ children }) => {
         logOut,
         userLogin,
         handleGoogleSignIn,
-        updateUserProfile
+        updateUserProfile,
+        loading
     };
 
     useEffect(() => {

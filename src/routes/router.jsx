@@ -10,11 +10,13 @@ import Login from "../components/login/login";
 import CampaignsLayout from "../layouts/CampaignsLayout";
 import AdventureDetailsLayout from "../layouts/AdventureDetailsLayout";
 import PrivateRoute from "./PrivateRoute";
-import ForgotPassword from "../components/ForgotPassword";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import MyProfile from "../components/profile/MyProfile";
 import UpdateProfile from "../components/profile/updateProfile";
+import ForgotPassword from "../components/login/ForgotPassword";
+
+
 AOS.init();
 
 
@@ -49,7 +51,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/campaigns",
-    element: <CampaignsLayout></CampaignsLayout>
+    element: <CampaignsLayout></CampaignsLayout>,
+    loader: async () => {
+      const res = await fetch('/campaigns.json');
+      const data = await res.json();
+      return data;
+    }
   },
   {
     path: "/my-profile",
@@ -69,7 +76,6 @@ const router = createBrowserRouter([
         <AdventureDetailsLayout></AdventureDetailsLayout>
       </PrivateRoute>,
     loader: async ({ params }) => {
-      console.log(params.id)
       const res = await fetch('/places.json');
       const data = await res.json();
       return data.find(place => parseInt(place.id) === parseInt(params.id)) || null;

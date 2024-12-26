@@ -1,8 +1,13 @@
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DynamicTitle from '../components/DynamicTitle';
+import Campaigns from '../components/campaigns/campaigns';
+import { useLoaderData } from 'react-router-dom';
 
 const CampaignsLayout = () => {
+
+    const campaigns = useLoaderData();
+
     return (
         <div className='min-h-screen flex flex-col font-archivo'>
             <DynamicTitle></DynamicTitle>
@@ -10,7 +15,7 @@ const CampaignsLayout = () => {
                 <Navbar></Navbar>
             </header>
             <main className='flex-grow'>
-                <h1>HEY! WELCOME TO OUR CAMPAIGNS.</h1>
+                <Campaigns campaigns={campaigns}></Campaigns>
             </main>
             <footer>
                 <Footer></Footer>
