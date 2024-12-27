@@ -28,4 +28,4 @@ The primary purpose of EcoGrace is to:
 
 ### Live URL
 
-Check out the live version of the project here: [EcoGrace](ecograce-a9.web.app)
+Check out the live version of the project here: [EcoGrace](https://ecograce-a9.web.app/)
