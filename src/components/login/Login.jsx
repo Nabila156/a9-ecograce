@@ -7,7 +7,7 @@ import { ImGoogle } from 'react-icons/im';
 
 const Login = () => {
 
-    const { setUser, userLogin, handleGoogleSignIn } = useContext(AuthContext);
+    const { setUser, userLogin, handleGoogleSignIn, setLoading } = useContext(AuthContext);
     const [error, setError] = useState({});
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
@@ -33,6 +33,9 @@ const Login = () => {
             })
             .catch((err) => {
                 setError({ ...error, login: err.code });
+            })
+            .finally(()=>{
+                setLoading(false);
             });
 
     };

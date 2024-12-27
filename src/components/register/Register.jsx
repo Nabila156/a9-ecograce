@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { PiEyeLight, PiEyeSlashLight } from "react-icons/pi";
 import { ImGoogle } from 'react-icons/im';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createNewUser, setUser, handleGoogleSignIn, updateUserProfile } = useContext(AuthContext);
+    const { createNewUser, setUser, handleGoogleSignIn, updateUserProfile, setLoading } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = (e) => {
@@ -33,14 +34,17 @@ const Register = () => {
             .then((result) => {
                 const user = result.user;
                 setUser(user);
-                updateUserProfile({displayName: name, photoURL: photo});
+                updateUserProfile({ displayName: name, photoURL: photo });
                 navigate('/');
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                setError(errorMessage);
-            });
+                toast.error(errorMessage);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     };
 
     return (
@@ -83,7 +87,7 @@ const Register = () => {
                 </div>
                 <p className='text-center mt-3 font-bold text-base'>OR</p>
                 <Link to='/' onClick={handleGoogleSignIn} className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'><ImGoogle />Login with Google</Link>
-                <p className='text-center'>Do you already have an account? Please <Link to= '/auth/login' className='font-bold text-blue-800'>Login</Link >.</p>
+                <p className='text-center'>Do you already have an account? Please <Link to='/auth/login' className='font-bold text-blue-800'>Login</Link >.</p>
 
                 {
                     error && <p className='text-red-500 text-center font-bold'>{error}</p>

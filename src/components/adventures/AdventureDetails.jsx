@@ -68,12 +68,6 @@ const AdventureDetails = ({ adventure }) => {
                         />
                     </div>
 
-                    {/* Talk with Expert */}
-                    <div className="md:w-96 mx-auto flex justify-between items-center border-red-50 rounded-xl hover:bg-slate-200 hover:scale-105 mt-12 p-4 border-2">
-                        <img className="h-24 w-24" src="/assets/expert.png" alt="expert" />
-                        <button onClick={handleTalkWithExpert} className="btn bg-red-50 text-red-400 font-bold text-lg md:text-2xl">Talk with Expert</button>
-                    </div>
-
                     {/* Details */}
                     <div className="mt-6">
                         <h2 className="text-xl font-semibold text-gray-800 mb-2">
@@ -156,7 +150,14 @@ const AdventureDetails = ({ adventure }) => {
                             <strong>Maximum Group Size:</strong> {maxGroupSize} people
                         </p>
                     </div>
+
+                    {/* Talk with Expert */}
+                    <div className="md:w-96 mx-auto flex justify-between items-center border-red-50 rounded-xl hover:bg-slate-200 hover:scale-105 mt-12 p-4 border-2">
+                        <img className="h-24 w-24" src="/assets/expert.png" alt="expert" />
+                        <button onClick={handleTalkWithExpert} className="btn bg-red-50 text-red-400 font-bold text-lg md:text-2xl">Talk with Expert</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     );
