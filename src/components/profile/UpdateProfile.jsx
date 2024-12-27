@@ -8,7 +8,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
-    const { updateUserProfile } = useContext(AuthContext)
+    const { updateUserProfile, setLoading } = useContext(AuthContext)
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -26,6 +26,9 @@ const UpdateProfile = () => {
             .catch((error) => {
                 setError("Error", error);
             })
+            .finally(() => {
+                    setLoading(false);
+                });
 
         navigate('/my-profile');
     }

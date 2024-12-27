@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
         return <div className="flex justify-center items-center min-h-screen"><span class="loading loading-ring loading-xs"></span>
             <span class="loading loading-ring loading-sm"></span>
             <span class="loading loading-ring loading-md"></span>
-            <span class="loading loading-ring loading-lg"></span></div>
+            <span class="loading loading-ring loading-lg"></span></div> 
     }
     if (user && user?.email) {
         return children;

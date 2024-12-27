@@ -53,7 +53,8 @@ const AuthProvider = ({ children }) => {
         userLogin,
         handleGoogleSignIn,
         updateUserProfile,
-        loading
+        loading,
+        setLoading
     };
 
     useEffect(() => {

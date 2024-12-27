@@ -13,8 +13,8 @@ import PrivateRoute from "./PrivateRoute";
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 import MyProfile from "../components/profile/MyProfile";
-import UpdateProfile from "../components/profile/updateProfile";
 import ForgotPassword from "../components/login/ForgotPassword";
+import UpdateProfile from "../components/profile/UpdateProfile";
 
 
 AOS.init();
