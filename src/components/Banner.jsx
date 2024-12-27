@@ -23,7 +23,7 @@ const Banner = () => {
             </div>
             <div id="slide3" className="carousel-item relative w-full">
                 <img
-                    src="https://i.ibb.co.com/cv7nv4h/Sylhet-Tea-Garden-Retreat.jpg"
+                    src="https://i.ibb.co.com/h8htNXj/Shopping.jpg"
                     className="w-full" />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide2" className="btn btn-circle">❮</a>
@@ -32,7 +32,7 @@ const Banner = () => {
             </div>
             <div id="slide4" className="carousel-item relative w-full">
                 <img
-                    src="https://i.ibb.co.com/mJ49b8m/Moulvibazar-River-Cruise.jpg"
+                    src="https://i.ibb.co.com/FJdGj5T/C5fc46246fbf8308d22072aedcc307d0.jpg"
                     className="w-full" />
                 <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href="#slide3" className="btn btn-circle">❮</a>

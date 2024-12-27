@@ -8,7 +8,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const UpdateProfile = () => {
-    const { updateUserProfile, setLoading } = useContext(AuthContext)
+    const { updateUserProfile, loading, setLoading } = useContext(AuthContext)
     const navigate = useNavigate();
     const [error, setError] = useState('');
 
@@ -32,7 +32,13 @@ const UpdateProfile = () => {
 
         navigate('/my-profile');
     }
-
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-ring loading-xs"></span>
+            <span className="loading loading-ring loading-sm"></span>
+            <span className="loading loading-ring loading-md"></span>
+            <span className="loading loading-ring loading-lg"></span></div> 
+    }
+    
     return (
         <div className='min-h-screen flex flex-col font-archivo'>
             <DynamicTitle></DynamicTitle>
@@ -46,13 +52,13 @@ const UpdateProfile = () => {
                         <label className="label">
                             <span className="label-text text-xl font-medium">Name</span>
                         </label>
-                        <input type="text" name='name' placeholder="name" className="input input-bordered" />
+                        <input type="text" name='name' placeholder="name" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text text-xl font-medium">Photo-URL</span>
                         </label>
-                        <input type="url" name='photo' placeholder="photo-url" className="input input-bordered" />
+                        <input type="url" name='photo' placeholder="photo-url" className="input input-bordered" required/>
                     </div>
                     <button className='btn mt-3 text-white text-lg font-bold bg-gradient-to-r from-blue-200 to-blue-500'>Update</button>
                 </form>

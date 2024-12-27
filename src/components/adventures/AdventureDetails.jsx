@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 const AdventureDetails = ({ adventure }) => {
 
@@ -17,9 +18,42 @@ const AdventureDetails = ({ adventure }) => {
         maxGroupSize,
     } = adventure;
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const handleTalkWithExpert = () => {
+        const currentTime = new Date();
+        const currentHour = currentTime.getHours();
+
+        if ((currentHour >= 10 && currentHour < 20)) {
+            window.open('https://meet.google.com/", "_blank');
+        }
+        else {
+            setIsModalOpen(true);
+        }
+    }
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    }
+
     return (
 
         <div className="bg-gray-100 text-gray-800 p-6">
+            {/* Modal */}
+            {
+                isModalOpen && (
+                    <dialog className="modal modal-open">
+                        <div className="modal-box">
+                            <form method="dialog">
+                                <button onClick={closeModal} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                            <h3 className="font-bold text-lg text-center">Consultation Time</h3>
+                            <p className="py-4 text-center"> Our experts are available for consultation from 10:00 AM to 8:00 PM.
+                            Please contact us during these hours for assistance.</p>
+                        </div>
+                    </dialog>
+                )
+            }
             <div className="max-w-3xl mx-auto">
                 {/* Adventure Details Section */}
                 <div className="bg-white shadow-md rounded-lg p-6">
@@ -32,6 +66,11 @@ const AdventureDetails = ({ adventure }) => {
                             alt={adventureTitle}
                             className="w-full object-cover rounded-md"
                         />
+                    </div>
+
+                    <div className="md:w-96 mx-auto flex justify-between items-center border-red-50 rounded-xl hover:bg-slate-200 hover:scale-105 mt-12 p-4 border">
+                        <img className="h-24 w-24" src="/assets/expert.png" alt="expert" />
+                        <button onClick={handleTalkWithExpert} className="btn bg-red-50 text-red-400 font-bold text-lg md:text-2xl">Talk with Expert</button>
                     </div>
 
                     <div className="mt-6">

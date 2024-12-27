@@ -4,11 +4,21 @@ import Footer from "../components/Footer";
 import AdventureDetails from "../components/adventures/adventureDetails";
 import { useLoaderData } from "react-router-dom";
 import DynamicTitle from "../components/DynamicTitle";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const AdventureDetailsLayout = () => {
     const adventure = useLoaderData();
-    
+    const { loading } = useContext(AuthContext);
+
+    if (loading) {
+        return <div className="flex justify-center items-center min-h-screen"><span className="loading loading-ring loading-xs"></span>
+            <span className="loading loading-ring loading-sm"></span>
+            <span className="loading loading-ring loading-md"></span>
+            <span className="loading loading-ring loading-lg"></span></div>
+    }
+
     if (!adventure) {
         return (
             <div className="text-center text-4xl text-red-400 py-10">
