@@ -76,7 +76,7 @@ const Register = () => {
                     <input type={showPassword ? "text" : "password"} name='password' placeholder="password" className="input input-bordered" required />
                     <button type='button' onClick={() => setShowPassword(!showPassword)} className='btn btn-sm absolute right-6 top-[52px]'>
                         {
-                            showPassword ? <PiEyeSlashLight /> : <PiEyeLight />
+                            showPassword ? <PiEyeLight /> : <PiEyeSlashLight />
                         }
                     </button>
                 </div>
